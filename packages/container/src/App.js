@@ -5,7 +5,8 @@ import {
   createGenerateClassName,
 } from '@material-ui/core/styles';
 import { createBrowserHistory } from 'history';
-import Progress from './components/Progress'
+
+import Progress from './components/Progress';
 import Header from './components/Header';
 
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
@@ -31,18 +32,21 @@ export default () => {
     <Router history={history}>
       <StylesProvider generateClassName={generateClassName}>
         <div>
-          <Header onSignOut={() => setIsSignedIn(false)} isSignedIn={isSignedIn} />
+          <Header
+            onSignOut={() => setIsSignedIn(false)}
+            isSignedIn={isSignedIn}
+          />
           <Suspense fallback={<Progress />}>
-          <Switch>
-            <Route path='/auth'>
-              <AuthLazy onSignIn={() => setIsSignedIn(true)} />
-            </Route>
-            <Route path='/dashboard'>
-              {!isSignedIn && <Redirect to='/' />}
-              <DashboardLazy />
-            </Route>
-            <Route path='/' component={MarketingLazy}/>
-          </Switch>
+            <Switch>
+              <Route path="/auth">
+                <AuthLazy onSignIn={() => setIsSignedIn(true)} />
+              </Route>
+              <Route path="/dashboard">
+                {!isSignedIn && <Redirect to="/" />}
+                <DashboardLazy />
+              </Route>
+              <Route path="/" component={MarketingLazy} />
+            </Switch>
           </Suspense>
         </div>
       </StylesProvider>
