@@ -6,7 +6,7 @@ import MarketingApp from './components/MarketingApp';
 function App() {
   return (
     <div>
-      <h1>Hi there! does this change trigger a workflow?</h1>
+      <h1>Hi there! did it work now?</h1>
       <hr />
       <MarketingApp />
     </div>
